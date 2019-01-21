@@ -131,12 +131,12 @@ export const constantRouterMap = [
   },
 
   {
-    path: 'external-link',
+    path: 'EducatingYoungEyes',
     component: Layout,
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        path: 'http://educatingyoungeyes.org/',
+        meta: { title: 'EducatingYoungEyes', icon: 'link' }
       }
     ]
   },
