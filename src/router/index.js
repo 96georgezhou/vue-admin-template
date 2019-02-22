@@ -24,7 +24,8 @@ import Layout from '../views/layout/Layout'
 export const constantRouterMap = [
   { path: '/login', component: () => import('@/views/login/index'), hidden: true },
   { path: '/404', component: () => import('@/views/404'), hidden: true },
-
+  { path: '/detailedTable', name: 'detailedTable', component: () => import('@/views/detailedTable/index'), hidden: true },
+  { path: '/signUp', name: 'signUp', component: () => import('@/views/signUp/index'), hidden: true },
   {
     path: '/',
     component: Layout,
@@ -59,14 +60,39 @@ export const constantRouterMap = [
   //   ]
   // },
   {
+    path: '/permission',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'permission',
+        component: () => import('@/views/permission/index'),
+        meta: { title: 'Permission', icon: 'password' }
+      }
+    ]
+  },
+  {
     path: '/table',
     component: Layout,
     children: [
       {
         path: 'index',
-        name: 'Form',
+        name: 'table',
         component: () => import('@/views/table/index'),
         meta: { title: 'Student Info', icon: 'table' }
+      }
+    ]
+  },
+
+  {
+    path: '/pendingUser',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'pendingUser',
+        component: () => import('@/views/pendingUser/index'),
+        meta: { title: 'Pending User', icon: 'user' }
       }
     ]
   },
@@ -77,7 +103,7 @@ export const constantRouterMap = [
     children: [
       {
         path: 'index',
-        name: 'Form',
+        name: 'form',
         component: () => import('@/views/form/index'),
         meta: { title: 'Generate Report', icon: 'form' }
       }

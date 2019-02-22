@@ -6,8 +6,8 @@
         <el-option/>
       </el-select>
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" >Search</el-button>
-      <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" >Add</el-button>
-      <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" >Export</el-button>
+      <!--<el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" >Add</el-button>-->
+      <!--<el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" >Export</el-button>-->
       <!--<el-checkbox v-model="showReviewer" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">{{ $t('table.reviewer') }}</el-checkbox>-->
     </div>
     <el-table
@@ -18,21 +18,18 @@
       fit
       highlight-current-row>
       <!--<el-checkbox v-model="selectAll" >Option</el-checkbox>-->
-      <el-table-column prop="id" align="center" label="Student ID" />
-      <el-table-column label="Name" prop="name" />
-      <el-table-column label="Grade" prop="grade" align="center"/>
-      <el-table-column label="School Name" prop="schoolName" align="center"/>
-      <el-table-column label="School District" prop="schoolDistrict" width="150" align="center"/>
-      <el-table-column label="Test Result" align="center" width="100" class-name="small-padding fixed-width">
+      <el-table-column prop="LoginName" align="center" width = "110" label="Login Name" />
+      <el-table-column label="Email" width = "145" prop="Email" />
+      <el-table-column label="First Name" prop="FirstName" align="center"/>
+      <el-table-column label="Last Name" prop="LastName" align="center"/>
+      <el-table-column label="Gender" prop="Gender" align="center"/>
+      <el-table-column label="Date of Birth" prop="DOB" width = "110" align="center"/>
+      <el-table-column label="Phone" prop="Phone" width = "120" align="center"/>
+      <el-table-column label="Organization" prop="Organization" width = "110" align="center"/>
+      <el-table-column label="Actions" align="center" width = "180" class-name="small-padding fixed-width">
         <template slot-scope="scope">
-          <el-button type="warning" size="mini" @click="navigate">Result</el-button>
-        </template>
-      </el-table-column>
-      <el-table-column label="Actions" align="center" width="230" class-name="small-padding fixed-width">
-        <template slot-scope="scope">
-          <el-button type="success" size="mini" >Edit</el-button>
-          <el-button size="mini" type="danger" >Delete</el-button>
-          <el-button size="mini" type="info" >Refer</el-button>
+          <el-button type="success" size="mini" >Approve</el-button>
+          <el-button size="mini" type="danger" >Reject</el-button>
         </template>
       </el-table-column>
       <!--<el-table-column align="center" prop="created_at" label="Display_time" width="200">-->
@@ -90,33 +87,39 @@ export default {
       selectAll: false,
       data2: [{
         selected: false,
-        id: 1,
-        name: 'George',
-        schoolName: 'UWB',
-        schoolDistrict: 'KingCounty',
-        grade: 'gradeOne',
-        refer: 'Result',
-        test: [1, 2, 3]
+        LoginName: 'john',
+        Email: 'john.smith@uw.edu',
+        FirstName: 'John',
+        LastName: 'Smith',
+        Gender: 'Male',
+        DOB: '1989-04-01',
+        Phone: '(000) 000-0000',
+        Organization: 'UW Bothell',
+        RoleID: 2
       },
       {
         selected: false,
-        id: 2,
-        name: 'Sarah',
-        schoolName: 'UWB',
-        schoolDistrict: 'KingCounty',
-        grade: 'gradeTwo',
-        refer: 'Result',
-        test: [1, 2, 3]
+        LoginName: 'john',
+        Email: 'john.smith@uw.edu',
+        FirstName: 'John',
+        LastName: 'Smith',
+        Gender: 'Male',
+        DOB: '1989-04-01',
+        Phone: '(000) 000-0000',
+        Organization: 'UW Bothell',
+        RoleID: 2
       },
       {
         selected: false,
-        id: 3,
-        name: 'Donald',
-        schoolName: 'UWB',
-        schoolDistrict: 'KingCounty',
-        grade: 'gradeThree',
-        refer: 'Result',
-        test: [1, 2, 3]
+        LoginName: 'john',
+        Email: 'john.smith@uw.edu',
+        FirstName: 'John',
+        LastName: 'Smith',
+        Gender: 'Male',
+        DOB: '1989-04-01',
+        Phone: '(000) 000-0000',
+        Organization: 'UW Bothell',
+        RoleID: 2
       }]
     }
   },

@@ -18,23 +18,13 @@
       fit
       highlight-current-row>
       <!--<el-checkbox v-model="selectAll" >Option</el-checkbox>-->
-      <el-table-column prop="id" align="center" label="Student ID" />
-      <el-table-column label="Name" prop="name" />
-      <el-table-column label="Grade" prop="grade" align="center"/>
+      <el-table-column prop="testerName" align="center" label="Tester Username" />
+      <el-table-column label="Student ID" prop="id" />
+      <el-table-column label="Timestamp" prop="timestamp" align="center"/>
+      <el-table-column label="Result (Pass/Fail)" prop="result" align="center"/>
       <el-table-column label="School Name" prop="schoolName" align="center"/>
-      <el-table-column label="School District" prop="schoolDistrict" width="150" align="center"/>
-      <el-table-column label="Test Result" align="center" width="100" class-name="small-padding fixed-width">
-        <template slot-scope="scope">
-          <el-button type="warning" size="mini" @click="navigate">Result</el-button>
-        </template>
-      </el-table-column>
-      <el-table-column label="Actions" align="center" width="230" class-name="small-padding fixed-width">
-        <template slot-scope="scope">
-          <el-button type="success" size="mini" >Edit</el-button>
-          <el-button size="mini" type="danger" >Delete</el-button>
-          <el-button size="mini" type="info" >Refer</el-button>
-        </template>
-      </el-table-column>
+      <el-table-column label="School District" prop="schoolDistrict" align="center"/>
+      <el-table-column label="SessionStart" prop="sessionStart" align="center"/>
       <!--<el-table-column align="center" prop="created_at" label="Display_time" width="200">-->
       <!--<template slot-scope="scope">-->
       <!--<i class="el-icon-time"/>-->
@@ -57,7 +47,6 @@
 
 <script>
 import { getList } from '@/api/table'
-// import { router } from '@/router/index'
 
 export default {
   filters: {
@@ -90,33 +79,33 @@ export default {
       selectAll: false,
       data2: [{
         selected: false,
-        id: 1,
-        name: 'George',
+        testerName: 'TesterOne',
+        id: '14',
+        timestamp: '2019/01/31 10:14:30',
+        result: 'pass',
         schoolName: 'UWB',
         schoolDistrict: 'KingCounty',
-        grade: 'gradeOne',
-        refer: 'Result',
-        test: [1, 2, 3]
+        sessionStart: '2019/01/31 10:14:30'
       },
       {
         selected: false,
-        id: 2,
-        name: 'Sarah',
+        testerName: 'TesterTwo',
+        id: '14',
+        timestamp: '2019/01/31 10:14:30',
+        result: 'fail',
         schoolName: 'UWB',
         schoolDistrict: 'KingCounty',
-        grade: 'gradeTwo',
-        refer: 'Result',
-        test: [1, 2, 3]
+        sessionStart: '2019/01/30 10:14:30'
       },
       {
         selected: false,
-        id: 3,
-        name: 'Donald',
+        testerName: 'TesterThree',
+        id: '14',
+        timestamp: '2019/01/31 10:14:30',
+        result: 'pass',
         schoolName: 'UWB',
         schoolDistrict: 'KingCounty',
-        grade: 'gradeThree',
-        refer: 'Result',
-        test: [1, 2, 3]
+        sessionStart: '2019/01/29 10:14:30'
       }]
     }
   },
@@ -130,11 +119,6 @@ export default {
         this.list = response.data.items
         this.listLoading = false
       })
-    },
-    navigate: function() {
-      const { query } = this.$route
-      // const { path } = params
-      this.$router.replace({ path: '/' + 'detailedTable', query })
     }
   }
 }

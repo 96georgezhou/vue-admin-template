@@ -1,11 +1,24 @@
 <template>
   <div class="app-container">
     <el-form ref="form" :model="form" label-width="120px">
+      <el-form-item label="Login name" >
+        <el-input v-model="form.loginName" style="width:48%;" />
+      </el-form-item>
+      <el-form-item label="Email" >
+        <el-input v-model="form.email" style="width:48%;" />
+      </el-form-item>
       <el-form-item label="First Name" >
         <el-input v-model="form.firstName" style="width:48%;" />
       </el-form-item>
       <el-form-item label="Last Name" >
         <el-input v-model="form.lastName" style="width:48%;" />
+      </el-form-item>
+      <el-form-item label="Gender">
+        <el-select v-model="form.gender" placeholder="Please select your gender" style="width:48%;">
+          <el-option label="Male" value="0"/>
+          <el-option label="Female" value="1"/>
+          <el-option label="Rather not say" value="2"/>
+        </el-select>
       </el-form-item>
       <el-form-item label="Date of Birth" >
         <el-date-picker
@@ -13,6 +26,20 @@
           type="date"
           placeholder="Please pick your Birthday"
           style="width:48%;"/>
+      </el-form-item>
+      <el-form-item label="Phone" >
+        <el-input v-model="form.phone" style="width:48%;" />
+      </el-form-item>
+      <el-form-item label="Organization" >
+        <el-input v-model="form.organization" style="width:48%;" />
+      </el-form-item>
+      <el-form-item label="Role">
+        <el-select v-model="form.role" placeholder="Please select your role" style="width:48%;">
+          <el-option label="Administrator" value="0"/>
+          <el-option label="Nurse" value="1"/>
+          <el-option label="Parent" value="2"/>
+          <el-option label="Researcher" value="3"/>
+        </el-select>
       </el-form-item>
       <!--<el-form-item label="Activity time">-->
       <!--<el-col :span="11">-->
@@ -44,7 +71,7 @@
         <el-input v-model="form.desc" type="textarea" style="width:48%;"/>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">Generate Report</el-button>
+        <el-button type="success" @click="onSubmit">Sign Up</el-button>
         <el-button @click="onCancel">Cancel</el-button>
       </el-form-item>
     </el-form>
@@ -83,8 +110,7 @@ export default {
 </script>
 
 <style scoped>
-.line{
-  text-align: center;
-}
+  .line{
+    text-align: center;
+  }
 </style>
-
