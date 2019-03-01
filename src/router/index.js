@@ -67,7 +67,7 @@ export const constantRouterMap = [
         path: 'index',
         name: 'permission',
         component: () => import('@/views/permission/index'),
-        meta: { title: 'Permission', icon: 'password' }
+        meta: { title: 'Permission', icon: 'user' }
       }
     ]
   },
@@ -83,7 +83,18 @@ export const constantRouterMap = [
       }
     ]
   },
-
+  {
+    path: '/changePassword',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'changePassword',
+        component: () => import('@/views/changePassword/index'),
+        meta: { title: 'Change Password', icon: 'password' }
+      }
+    ]
+  },
   {
     path: '/pendingUser',
     component: Layout,

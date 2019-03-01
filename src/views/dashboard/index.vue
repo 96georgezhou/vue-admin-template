@@ -27,11 +27,23 @@
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" to="/example/table">
         <div class="card-panel-icon-wrapper icon-table">
-          <svg-icon icon-class="password" class-name="card-panel-icon" />
+          <svg-icon icon-class="user" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
             <router-link to="/permission/index" tag="div">Permission</router-link>
+          </div>
+        </div>
+      </div>
+    </el-col>
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <div class="card-panel" to="/example/table">
+        <div class="card-panel-icon-wrapper icon-table">
+          <svg-icon icon-class="password" class-name="card-panel-icon" />
+        </div>
+        <div class="card-panel-description">
+          <div class="card-panel-text">
+            <router-link to="/changePassword/index" tag="div">Password</router-link>
           </div>
         </div>
       </div>
@@ -100,6 +112,9 @@ export default {
         }
         .icon-website {
           background: #f4516c;
+        }
+        .icon-password {
+          background: #a584f1;
         }
         .icon-shopping {
           background: #34bfa3

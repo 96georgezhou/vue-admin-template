@@ -41,10 +41,10 @@
       <!--</el-radio-group>-->
       <!--</el-form-item>-->
       <el-form-item label="Comment" >
-        <el-input v-model="form.desc" type="textarea" style="width:48%;"/>
+        <el-input v-model="form.desc" type="textarea" style="width:48%;" />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">Generate Report</el-button>
+        <el-button type="primary" align = "right" @click="onSubmit" >Generate Report</el-button>
         <el-button @click="onCancel">Cancel</el-button>
       </el-form-item>
     </el-form>
