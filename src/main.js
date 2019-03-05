@@ -1,5 +1,5 @@
 import Vue from 'vue'
-
+import VueResource from 'vue-resource'
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 
 import ElementUI from 'element-ui'
@@ -16,6 +16,7 @@ import '@/icons' // icon
 import '@/permission' // permission control
 
 Vue.use(ElementUI, { locale })
+Vue.use(VueResource)
 
 Vue.config.productionTip = false
 
