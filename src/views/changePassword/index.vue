@@ -21,7 +21,7 @@
       <el-form-item align="right">
         <el-button type="primary" @click="changePassword()">Change Password</el-button>
       </el-form-item>
-      <p id="message"/>>
+      <p id="message"/>
     </el-form>
   </div>
 </template>
