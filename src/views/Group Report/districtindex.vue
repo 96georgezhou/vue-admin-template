@@ -36,7 +36,7 @@ export default {
         console.log(JSON.stringify(flattenedJSON))
         var wb = XLSX.utils.book_new()
         var studentInfo = XLSX.utils.json_to_sheet(flattenedJSON)
-        XLSX.utils.book_append_sheet(wb, studentInfo, 'class Report') // StudentReport is name of Worksheet
+        XLSX.utils.book_append_sheet(wb, studentInfo, 'District Report') // StudentReport is name of Worksheet
         XLSX.writeFile(wb, 'test.xlsx')
       })
     },

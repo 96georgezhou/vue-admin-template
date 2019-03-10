@@ -53,7 +53,7 @@ export default {
           var flatten = this.flattenJSON(res)
           var studentInfo = XLSX.utils.aoa_to_sheet(flatten)
           var wb = XLSX.utils.book_new()
-          XLSX.utils.book_append_sheet(wb, studentInfo, 'StudentReport') // StudentReport is name of Worksheet
+          XLSX.utils.book_append_sheet(wb, studentInfo, 'Class Report') // StudentReport is name of Worksheet
           XLSX.writeFile(wb, 'book.xlsx')
         })
       }

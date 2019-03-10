@@ -79,7 +79,7 @@ export default {
         this.$store.dispatch('SendAPI', this.studentform).then((res) => {
           var studentInfo = XLSX.utils.json_to_sheet(res)
           var wb = XLSX.utils.book_new()
-          XLSX.utils.book_append_sheet(wb, studentInfo, 'StudentReport') // StudentReport is name of Worksheet
+          XLSX.utils.book_append_sheet(wb, studentInfo, 'StudentReport')
           XLSX.writeFile(wb, 'book.xlsx')
         })
       }
