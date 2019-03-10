@@ -1,4 +1,4 @@
-import { postapi } from '@/api/StudentReport'
+// import { postapi } from '@/api/StudentReport'
 import { readFile } from '@/mock/getJSONFile'
 const connectDB = {
   state: {
@@ -6,29 +6,31 @@ const connectDB = {
 
   actions: {
     SendAPI({ commit }, payload) {
-      console.log('reaching connectDB ' + payload.firstname)
-      var o = {}
-      var key = 'User'
-      var json = readFile()
-      o[key].push(json)
-      postapi(payload, 'http://ec2-52-15-205-54.us-east-2.compute.amazonaws.com:8080/appdata/getstudents', 'EYEgroup', 'uwbothell')
-      return o
+      // console.log('reaching connectDB ' + payload)
+      var json = readFile('singlestudent')
+      // console.log('send api received json : ' + JSON.stringify(json))
+      return json
+    },
+    SendAPIforClass({ commit }, payload) {
+      console.log('reaching connectDB ' + payload)
+      var json = readFile('classwise')
+      // console.log('send api received json : ' + JSON.stringify(json))
+      return json
+    },
+    SendAPIforSchool({ commit }, payload) {
+      console.log('reaching connectDB ' + payload)
+      var json = readFile('schoolwise')
+      // console.log('length2 = ' + json.length)
+      // console.log('send api received json : ' + JSON.stringify(json))
+      return json
+    },
+    SendAPIforDistrict({ commit }, payload) {
+      console.log('reaching connectDB ' + payload)
+      var json = readFile('districtwise')
+      // console.log('send api received json : ' + JSON.stringify(json))
+      return json
     }
   }
 }
 
 export default connectDB
-
-/* var o = {}
-      var key = 'User'
-      o[key] = []
-      var data = {
-        sampleTime: '1450632410296',
-        data: '76.36731:3.4651554:0.5665419'
-      }
-      var data2 = {
-        sampleTime: '1450632410296',
-        data: '78.15431:0.5247617:-0.20050584'
-      }
-      o[key].push(data)
-      o[key].push(data2)*/

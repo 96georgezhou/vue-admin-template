@@ -1,8 +1,9 @@
 <template>
-  <div id="app" class ="centerButtons">
+  <div class ="centerButtons">
     <p>
-      <router-link to="/form/index" tag="button">  Single Student </router-link><br><br>
-      <router-link to="/other_report_menu/index" tag="button">  Other Reports </router-link>
+      <router-link to="/group_report/classindex" tag="button">  Class Report </router-link><br><br>
+      <router-link to="/group_report/schoolindex" tag="button">  School Reports </router-link><br><br>
+      <router-link to="/group_report/districtindex" tag="button">  District Reports </router-link>
     </p>
   </div>
 </template>

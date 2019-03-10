@@ -96,7 +96,6 @@ export const constantRouterMap = [
       }
     ]
   },
-
   {
     path: '/form',
     component: Layout,
@@ -104,7 +103,7 @@ export const constantRouterMap = [
       {
         path: 'index',
         name: 'form',
-        component: () => import('@/views/Report Menu/index'),
+        component: () => import('@/views/form/index'),
         meta: { title: 'Generate Report', icon: 'form' }
       }
     ]
@@ -116,8 +115,60 @@ export const constantRouterMap = [
       {
         path: 'index',
         name: 'Report',
-        component: () => import('@/views/form/index'),
+        component: () => import('@/views/Report Menu/index'),
         meta: { title: 'Generate Report', icon: 'Report' }
+      }
+
+    ]
+  },
+  {
+    path: '/group_report',
+    component: Layout,
+    children: [
+      {
+        path: 'classindex',
+        name: 'group_report',
+        component: () => import('@/views/Group Report/classindex'),
+        meta: { title: 'Other Report Menu', icon: 'Class Report' }
+      }
+
+    ]
+  },
+  {
+    path: '/group_report',
+    component: Layout,
+    children: [
+      {
+        path: 'schoolindex',
+        name: 'group_report',
+        component: () => import('@/views/Group Report/schoolindex'),
+        meta: { title: 'Other Report Menu', icon: 'Class Report' }
+      }
+
+    ]
+  },
+  {
+    path: '/group_report',
+    component: Layout,
+    children: [
+      {
+        path: 'districtindex',
+        name: 'group_report',
+        component: () => import('@/views/Group Report/districtindex'),
+        meta: { title: 'Other Report Menu', icon: 'Class Report' }
+      }
+
+    ]
+  },
+  {
+    path: '/other_report_menu',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Report',
+        component: () => import('@/views/OtherReportMenu/index'),
+        meta: { title: 'Other Report Menu', icon: 'OtherReportMenu' }
       }
 
     ]

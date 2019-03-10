@@ -20,19 +20,19 @@ export function postapi(studentinfo, url, username, password) {
   console.log('output: ' + request.responseText)
 }
 // Send a POST request
-/* axios({
-  method: 'post',
-  url: url,
-  data: studentinfo,
-  headers: {
-    'Content-Type': 'application/json;charset=UTF-8',
-    'Cache-Control': 'no-cache',
-    'Authorization': 'Basic ' + authorizationBasic
-  }
-}).then(function(response) {
-  console.log('Head With Authentication :' + response)
-})
-  .catch(function(error) {
-    console.log('Post Error : ' + error)
-  })*/
+// axios({
+//   method: 'post',
+//   url: url,
+//   data: studentinfo,
+//   headers: {
+//     'Content-Type': 'application/json;charset=UTF-8',
+//     'Cache-Control': 'no-cache',
+//     'Authorization': 'Basic ' + authorizationBasic
+//   }
+// }).then(function(response) {
+//   console.log('Head With Authentication :' + response)
+// })
+//   .catch(function(error) {
+//     console.log('Post Error : ' + error)
+//   })
 

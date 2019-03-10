@@ -19,7 +19,7 @@
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            <router-link to="/form/index" tag="div">Report</router-link>
+            <router-link to="/Report/index" tag="div">Report</router-link>
           </div>
         </div>
       </div>
