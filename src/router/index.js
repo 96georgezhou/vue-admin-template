@@ -22,20 +22,53 @@ import Layout from '../views/layout/Layout'
   }
 **/
 export const constantRouterMap = [
-  { path: '/login', component: () => import('@/views/login/index'), hidden: true },
-  { path: '/404', component: () => import('@/views/404'), hidden: true },
-  { path: '/detailedTable', name: 'detailedTable', component: () => import('@/views/detailedTable/index'), hidden: true },
-  { path: '/signUp', name: 'signUp', component: () => import('@/views/signUp/index'), hidden: true },
+  {
+    path: '/login',
+    component: () => import('@/views/login/index'),
+    hidden: true
+  },
+  {
+    path: '/404',
+    component: () => import('@/views/404'),
+    hidden: true
+  },
+  {
+    path: '/detailedTable',
+    name: 'detailedTable',
+    component: () => import('@/views/detailedTable/index'),
+    hidden: true
+  },
+  {
+    path: '/signUp',
+    name: 'signUp',
+    component: () => import('@/views/signUp/index'),
+    hidden: true
+  },
+  // {
+  //   path: "/",
+  //   component: Layout,
+  //   redirect: "/dashboard",
+  //   name: "Dashboard",
+  //   hidden: true,
+  //   children: [
+  //     {
+  //       path: "dashboard",
+  //       component: () => import("@/views/dashboard/index")
+  //     }
+  //   ]
+  // },
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
-    name: 'Dashboard',
+    redirect: '/studentInfo',
+    name: 'Student Info',
     hidden: true,
-    children: [{
-      path: 'dashboard',
-      component: () => import('@/views/dashboard/index')
-    }]
+    children: [
+      {
+        path: 'studentInfo',
+        component: () => import('@/views/studentInfo/index')
+      }
+    ]
   },
 
   // {
@@ -72,13 +105,13 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: '/table',
+    path: '/studentInfo',
     component: Layout,
     children: [
       {
         path: 'index',
-        name: 'table',
-        component: () => import('@/views/table/index'),
+        name: 'Student Info',
+        component: () => import('@/views/studentInfo/index'),
         meta: { title: 'Student Info', icon: 'table' }
       }
     ]
@@ -109,13 +142,13 @@ export const constantRouterMap = [
   },
 
   {
-    path: '/form',
+    path: '/generateReport',
     component: Layout,
     children: [
       {
         path: 'index',
-        name: 'form',
-        component: () => import('@/views/form/index'),
+        name: 'generateReport',
+        component: () => import('@/views/generateReport/index'),
         meta: { title: 'Generate Report', icon: 'form' }
       }
     ]
