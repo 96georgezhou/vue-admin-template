@@ -212,7 +212,6 @@ export default {
       this.$router.replace({ path: '/' + 'detailedTable', query })
     },
     tableRowClassName({ row, rowIndex }) {
-      console.log(row)
       if (row.refer === true) {
         return 'background-color: #909399'
       } else {
@@ -222,7 +221,11 @@ export default {
     handleEdit(index, row) {},
     handleDelete(index, row) {},
     handleRefer(index, row) {
-      row.refer = true
+      if (row.refer === false) {
+        row.refer = true
+      } else {
+        row.refer = false
+      }
     }
   }
 }
