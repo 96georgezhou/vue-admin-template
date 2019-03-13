@@ -26,23 +26,44 @@
       v-loading="listLoading"
       :data="studentData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
       :default-sort="{prop: 'name', order: 'ascending'}"
-      :row-style="tableRowClassName"
+      :row-style="actionColor"
       element-loading-text="Loading"
       border
       fit
     >
       <!--<el-checkbox v-model="selectAll" >Option</el-checkbox>-->
       <el-table-column sortable prop="id" align="center" label="Student ID"/>
-      <el-table-column sortable label="Name" prop="name"/>
-      <el-table-column sortable label="Grade" prop="grade" align="center"/>
-      <el-table-column sortable label="School Name" prop="schoolName" align="center"/>
+      <!-- <el-table-column sortable prop="id" align="center" label="Student ID">
+        <template slot-scope="scope">
+          <el-input v-model="scope.row.id" :readonly="!scope.row._edited"/>
+        </template>
+      </el-table-column>-->
+      <el-table-column sortable label="Name" prop="name">
+        <template slot-scope="scope">
+          <el-input v-model="scope.row.name" :readonly="!scope.row._edited"/>
+        </template>
+      </el-table-column>
+      <el-table-column sortable label="Grade" prop="grade" align="center">
+        <template slot-scope="scope">
+          <el-input v-model="scope.row.grade" :readonly="!scope.row._edited"/>
+        </template>
+      </el-table-column>
+      <el-table-column sortable label="School Name" prop="schoolName" align="center">
+        <template slot-scope="scope">
+          <el-input v-model="scope.row.schoolName" :readonly="!scope.row._edited"/>
+        </template>
+      </el-table-column>
       <el-table-column
         sortable
         label="School District"
         prop="schoolDistrict"
         width="150"
         align="center"
-      />
+      >
+        <template slot-scope="scope">
+          <el-input v-model="scope.row.schoolDistrict" :readonly="!scope.row._edited"/>
+        </template>
+      </el-table-column>
       <el-table-column
         label="Tests"
         align="center"
@@ -142,7 +163,8 @@ export default {
           schoolName: 'UWB',
           schoolDistrict: 'King County',
           grade: '1',
-          refer: true
+          refer: true,
+          _edited: false
         },
         {
           id: 2,
@@ -150,7 +172,8 @@ export default {
           schoolName: 'UWB',
           schoolDistrict: 'King County',
           grade: '2',
-          refer: false
+          refer: false,
+          _edited: false
         },
         {
           id: 3,
@@ -158,7 +181,8 @@ export default {
           schoolName: 'UWB',
           schoolDistrict: 'King County',
           grade: '3',
-          refer: false
+          refer: false,
+          _edited: true
         }
       ]
       // data2: [
@@ -211,14 +235,24 @@ export default {
       // const { path } = params
       this.$router.replace({ path: '/' + 'detailedTable', query })
     },
-    tableRowClassName({ row, rowIndex }) {
-      if (row.refer === true) {
-        return 'background-color: #909399'
+    actionColor({ row, rowIndex }) {
+      if (row._edited === true) {
+        return 'background-color: #E6A23C'
       } else {
-        return 'background-color: #FFFFFF'
+        if (row.refer === true) {
+          return 'background-color: #909399'
+        } else {
+          return 'background-color: #FFFFFF'
+        }
       }
     },
-    handleEdit(index, row) {},
+    handleEdit(index, row) {
+      if (row._edited === false) {
+        row._edited = true
+      } else {
+        row._edited = false
+      }
+    },
     handleDelete(index, row) {},
     handleRefer(index, row) {
       if (row.refer === false) {
