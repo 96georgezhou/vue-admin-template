@@ -26,11 +26,10 @@
       v-loading="listLoading"
       :data="studentData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
       :default-sort="{prop: 'name', order: 'ascending'}"
-      :row-class-name="tableRowClassName"
+      :row-style="tableRowClassName"
       element-loading-text="Loading"
       border
       fit
-      highlight-current-row
     >
       <!--<el-checkbox v-model="selectAll" >Option</el-checkbox>-->
       <el-table-column sortable prop="id" align="center" label="Student ID"/>
@@ -91,6 +90,13 @@
   </div>
 </template>
 
+<style>
+.el-table .refer-row {
+  /* #909399 */
+  background-color: '#000';
+}
+</style>
+
 <script>
 import { getList } from '@/api/table'
 // import { router } from '@/router/index'
@@ -135,21 +141,24 @@ export default {
           name: 'George',
           schoolName: 'UWB',
           schoolDistrict: 'King County',
-          grade: '1'
+          grade: '1',
+          refer: true
         },
         {
           id: 2,
           name: 'Sarah',
           schoolName: 'UWB',
           schoolDistrict: 'King County',
-          grade: '2'
+          grade: '2',
+          refer: false
         },
         {
           id: 3,
           name: 'Donald',
           schoolName: 'UWB',
           schoolDistrict: 'King County',
-          grade: '3'
+          grade: '3',
+          refer: false
         }
       ]
       // data2: [
@@ -202,10 +211,19 @@ export default {
       // const { path } = params
       this.$router.replace({ path: '/' + 'detailedTable', query })
     },
-    tableRowClassName({ row, rowIndex }) {},
+    tableRowClassName({ row, rowIndex }) {
+      console.log(row)
+      if (row.refer === true) {
+        return 'background-color: #909399'
+      } else {
+        return 'background-color: #FFFFFF'
+      }
+    },
     handleEdit(index, row) {},
     handleDelete(index, row) {},
-    handleRefer(index, row) {}
+    handleRefer(index, row) {
+      row.refer = true
+    }
   }
 }
 </script>
