@@ -27,8 +27,8 @@
       :data="studentData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
       :default-sort="{prop: 'name', order: 'ascending'}"
       :row-style="actionColor"
+      row-class-name="no-hover"
       element-loading-text="Loading"
-      border
       fit
     >
       <!--<el-checkbox v-model="selectAll" >Option</el-checkbox>-->
@@ -112,9 +112,8 @@
 </template>
 
 <style>
-.el-table .refer-row {
-  /* #909399 */
-  background-color: '#000';
+.no-hover:hover > td {
+  background-color: initial !important;
 }
 </style>
 
