@@ -28,6 +28,7 @@
       :data="studentData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
       :default-sort="{prop: 'name', order: 'ascending'}"
       :row-style="tableRowStyle"
+      row-class-name="no-hover"
       element-loading-text="Loading"
       border
       fit
@@ -89,7 +90,13 @@
       />
     </div>-->
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
-      <el-form ref="dataForm" :model="temp" label-position="left" label-width="70px" style="width: 400px; margin-left:50px;">
+      <el-form
+        ref="dataForm"
+        :model="temp"
+        label-position="left"
+        label-width="70px"
+        style="width: 400px; margin-left:50px;"
+      >
         <el-form-item prop="name">
           <label for="nameInput">Name</label>
           <el-input id="nameInput" v-model="temp.name"/>
@@ -116,9 +123,8 @@
 </template>
 
 <style>
-.el-table .refer-row {
-  /* #909399 */
-  background-color: '#000';
+.no-hover:hover > td {
+  background-color: initial !important;
 }
 </style>
 
@@ -182,7 +188,7 @@ export default {
           schoolName: 'UWB',
           schoolDistrict: 'King County',
           grade: '1',
-          refer: true
+          refer: false
         },
         {
           id: 2,
