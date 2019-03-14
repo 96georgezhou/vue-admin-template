@@ -1,8 +1,24 @@
 <template>
   <div class="app-container">
     <div class="filter-container" style="margin-bottom: 20px;">
-      <el-input :aria-placeholder="Class" style="width: 600px;" class="filter-item" />
-      <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" >Search</el-button>
+      <el-input :aria-placeholder="Class" style="width: 600px;" class="filter-item"/>
+      <el-select clearable style="width: 90px" class="filter-item">
+        <el-option/>
+      </el-select>
+      <el-button v-waves class="filter-item" type="primary" icon="el-icon-search">Search</el-button>
+      <el-button
+        class="filter-item"
+        style="margin-left: 10px;"
+        type="primary"
+        icon="el-icon-edit"
+      >Add</el-button>
+      <el-button
+        v-waves
+        :loading="downloadLoading"
+        class="filter-item"
+        type="primary"
+        icon="el-icon-download"
+      >Export</el-button>
       <!--<el-checkbox v-model="showReviewer" class="filter-item" style="margin-left:15px;" @change="tableKey=tableKey+1">{{ $t('table.reviewer') }}</el-checkbox>-->
     </div>
     <el-table
@@ -12,10 +28,11 @@
       border
       fit
       highlight-current-row
-      style="margin-bottom: 20px;">
+      style="margin-bottom: 20px;"
+    >
       <!--<el-checkbox v-model="selectAll" >Option</el-checkbox>-->
-      <el-table-column prop="testerName" align="center" label="Tester Username" />
-      <el-table-column label="Student ID" prop="id" />
+      <el-table-column prop="testerName" align="center" label="Tester Username"/>
+      <el-table-column label="Student ID" prop="id"/>
       <el-table-column label="Timestamp" prop="timestamp" align="center"/>
       <el-table-column label="Result (Pass/Fail)" prop="result" align="center"/>
       <el-table-column label="School Name" prop="schoolName" align="center"/>
@@ -29,10 +46,7 @@
       <!--</el-table-column>-->
     </el-table>
     <template>
-          <el-button
-            type="info"
-            @click="goBack()"
-          >Back</el-button>
+      <el-button type="info" @click="goBack()">Back</el-button>
     </template>
   </div>
 </template>
@@ -64,41 +78,46 @@ export default {
         sort: '+id'
       },
       importanceOptions: [1, 2, 3],
-      sortOptions: [{ label: 'ID Ascending', key: '+id' }, { label: 'ID Descending', key: '-id' }],
+      sortOptions: [
+        { label: 'ID Ascending', key: '+id' },
+        { label: 'ID Descending', key: '-id' }
+      ],
       statusOptions: ['published', 'draft', 'deleted'],
       showReviewer: false,
       list: null,
       selectAll: false,
-      data2: [{
-        selected: false,
-        testerName: 'TesterOne',
-        id: '14',
-        timestamp: '2019/01/31 10:14:30',
-        result: 'pass',
-        schoolName: 'UWB',
-        schoolDistrict: 'KingCounty',
-        sessionStart: '2019/01/31 10:14:30'
-      },
-      {
-        selected: false,
-        testerName: 'TesterTwo',
-        id: '14',
-        timestamp: '2019/01/31 10:14:30',
-        result: 'fail',
-        schoolName: 'UWB',
-        schoolDistrict: 'KingCounty',
-        sessionStart: '2019/01/30 10:14:30'
-      },
-      {
-        selected: false,
-        testerName: 'TesterThree',
-        id: '14',
-        timestamp: '2019/01/31 10:14:30',
-        result: 'pass',
-        schoolName: 'UWB',
-        schoolDistrict: 'KingCounty',
-        sessionStart: '2019/01/29 10:14:30'
-      }]
+      data2: [
+        {
+          selected: false,
+          testerName: 'TesterOne',
+          id: '14',
+          timestamp: '2019/01/31 10:14:30',
+          result: 'pass',
+          schoolName: 'UWB',
+          schoolDistrict: 'KingCounty',
+          sessionStart: '2019/01/31 10:14:30'
+        },
+        {
+          selected: false,
+          testerName: 'TesterTwo',
+          id: '14',
+          timestamp: '2019/01/31 10:14:30',
+          result: 'fail',
+          schoolName: 'UWB',
+          schoolDistrict: 'KingCounty',
+          sessionStart: '2019/01/30 10:14:30'
+        },
+        {
+          selected: false,
+          testerName: 'TesterThree',
+          id: '14',
+          timestamp: '2019/01/31 10:14:30',
+          result: 'pass',
+          schoolName: 'UWB',
+          schoolDistrict: 'KingCounty',
+          sessionStart: '2019/01/29 10:14:30'
+        }
+      ]
     }
   },
   created() {
@@ -119,5 +138,4 @@ export default {
     }
   }
 }
-
 </script>

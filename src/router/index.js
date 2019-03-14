@@ -21,7 +21,6 @@ import Layout from '../views/layout/Layout'
     icon: 'svg-name'             the icon show in the sidebar,
   }
 **/
-
 export const constantRouterMap = [
   {
     path: '/login',
@@ -114,6 +113,18 @@ export const constantRouterMap = [
         name: 'Student Info',
         component: () => import('@/views/studentInfo/index'),
         meta: { title: 'Student Info', icon: 'table' }
+      }
+    ]
+  },
+  {
+    path: '/changePassword',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'changePassword',
+        component: () => import('@/views/changePassword/index'),
+        meta: { title: 'Change Password', icon: 'password' }
       }
     ]
   },
