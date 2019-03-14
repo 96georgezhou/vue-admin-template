@@ -1,56 +1,68 @@
 <template>
-<el-row :gutter="40" class="panel-group">
-  <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-    <div class="card-panel" to="/example/table">
-      <div class="card-panel-icon-wrapper icon-table">
-        <svg-icon icon-class="table" class-name="card-panel-icon" />
-      </div>
-      <div class="card-panel-description">
-        <div class="card-panel-text">
-          <router-link to="/table/index" tag="div">Student Info</router-link>
-        </div>
-      </div>
-    </div>
-  </el-col>
-  <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-    <div class="card-panel" to="/example/table">
-      <div class="card-panel-icon-wrapper icon-form">
-        <svg-icon icon-class="form" class-name="card-panel-icon" />
-      </div>
-      <div class="card-panel-description">
-        <div class="card-panel-text">
-          <router-link to="/form/index" tag="div">Report</router-link>
-        </div>
-      </div>
-    </div>
-  </el-col>
+  <el-row :gutter="40" class="panel-group">
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-    <div class="card-panel" to="/example/table">
-      <div class="card-panel-icon-wrapper icon-password">
-        <svg-icon icon-class="password" class-name="card-panel-icon" />
-      </div>
-      <div class="card-panel-description">
-        <div class="card-panel-text">
-          <router-link to="/changePassword/index" tag="div">Password</router-link>
+      <div class="card-panel" to="/example/table">
+        <div class="card-panel-icon-wrapper icon-table">
+          <svg-icon icon-class="table" class-name="card-panel-icon" />
+        </div>
+        <div class="card-panel-description">
+          <div class="card-panel-text">
+            <router-link to="/table/index" tag="div">Student Info</router-link>
+          </div>
         </div>
       </div>
-    </div>
-  </el-col>
-  <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-    <div class="card-panel" to="/example/table">
-      <div class="card-panel-icon-wrapper icon-website">
-        <svg-icon icon-class="eye" class-name="card-panel-icon" />
-      </div>
-      <div class="card-panel-description">
-        <div class="card-panel-text">
-          <a href="http://educatingyoungeyes.org/" target="_blank">
-            EYE
-          </a>
+    </el-col>
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <div class="card-panel" to="/example/table">
+        <div class="card-panel-icon-wrapper icon-form">
+          <svg-icon icon-class="form" class-name="card-panel-icon" />
+        </div>
+        <div class="card-panel-description">
+          <div class="card-panel-text">
+            <router-link to="/form/index" tag="div">Report</router-link>
+          </div>
         </div>
       </div>
-    </div>
-  </el-col>
-</el-row>
+    </el-col>
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <div class="card-panel" to="/example/table">
+        <div class="card-panel-icon-wrapper icon-table">
+          <svg-icon icon-class="user" class-name="card-panel-icon" />
+        </div>
+        <div class="card-panel-description">
+          <div class="card-panel-text">
+            <router-link to="/permission/index" tag="div">Permission</router-link>
+          </div>
+        </div>
+      </div>
+    </el-col>
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <div class="card-panel" to="/example/table">
+        <div class="card-panel-icon-wrapper icon-table">
+          <svg-icon icon-class="password" class-name="card-panel-icon" />
+        </div>
+        <div class="card-panel-description">
+          <div class="card-panel-text">
+            <router-link to="/changePassword/index" tag="div">Password</router-link>
+          </div>
+        </div>
+      </div>
+    </el-col>
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <div class="card-panel" to="/example/table">
+        <div class="card-panel-icon-wrapper icon-website">
+          <svg-icon icon-class="eye" class-name="card-panel-icon" />
+        </div>
+        <div class="card-panel-description">
+          <div class="card-panel-text">
+            <a href="http://educatingyoungeyes.org/" target="_blank">
+              EYE
+            </a>
+          </div>
+        </div>
+      </div>
+    </el-col>
+  </el-row>
 </template>
 
 <script>

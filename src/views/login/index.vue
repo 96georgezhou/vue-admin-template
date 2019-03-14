@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
-      <h3 class="title">vue-admin-template</h3>
+      <h3 class="title">EYE Web Portal</h3>
       <el-form-item prop="username">
         <span class="svg-container">
           <svg-icon icon-class="user" />
@@ -24,14 +24,17 @@
         </span>
       </el-form-item>
       <el-form-item>
-        <el-button :loading="loading" type="primary" style="width:100%;" @click.native.prevent="handleLogin">
+        <el-button :loading="loading" type="primary" style="width:48%;" @click.native.prevent="handleLogin">
           Sign in
         </el-button>
+        <el-button :loading="loading" type="success" style="width:48%;" @click.native.prevent="handleSignUp">
+          Sign Up
+        </el-button>
       </el-form-item>
-      <div class="tips">
-        <span style="margin-right:20px;">username: admin</span>
-        <span> password: admin</span>
-      </div>
+      <!--<div class="tips">-->
+      <!--<span style="margin-right:20px;">username: admin</span>-->
+      <!--<span> password: admin</span>-->
+      <!--</div>-->
     </el-form>
   </div>
 </template>
@@ -100,6 +103,18 @@ export default {
           console.log('error submit!!')
           return false
         }
+      })
+    },
+    handleSignUp() {
+      this.loading = true
+      this.$store.dispatch('Login', this.loginForm).then(() => {
+        this.loading = false
+        const { query } = this.$route
+        // const { path } = params
+        this.$router.replace({ path: '/' + 'signUp', query })
+        // this.$router.push({ path: this.redirect || '/' })
+      }).catch(() => {
+        this.loading = false
       })
     }
   }
