@@ -26,7 +26,7 @@
       v-loading="listLoading"
       :data="studentData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
       :default-sort="{prop: 'name', order: 'ascending'}"
-      :row-style="tableRowClassName"
+      :row-style="tableRowStyle"
       element-loading-text="Loading"
       border
       fit
@@ -211,7 +211,7 @@ export default {
       // const { path } = params
       this.$router.replace({ path: '/' + 'detailedTable', query })
     },
-    tableRowClassName({ row, rowIndex }) {
+    tableRowStyle({ row, rowIndex }) {
       if (row.refer === true) {
         return 'background-color: #909399'
       } else {
