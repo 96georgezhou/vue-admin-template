@@ -44,29 +44,16 @@ export const constantRouterMap = [
     component: () => import('@/views/signUp/index'),
     hidden: true
   },
-  // {
-  //   path: "/",
-  //   component: Layout,
-  //   redirect: "/dashboard",
-  //   name: "Dashboard",
-  //   hidden: true,
-  //   children: [
-  //     {
-  //       path: "dashboard",
-  //       component: () => import("@/views/dashboard/index")
-  //     }
-  //   ]
-  // },
   {
     path: '/',
     component: Layout,
-    redirect: '/studentInfo',
-    name: 'Student Info',
+    redirect: '/dashboard',
+    name: 'Dashboard',
     hidden: true,
     children: [
       {
-        path: 'studentInfo',
-        component: () => import('@/views/studentInfo/index')
+        path: 'dashboard',
+        component: () => import('@/views/dashboard/index')
       }
     ]
   },
