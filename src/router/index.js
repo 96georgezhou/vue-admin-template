@@ -45,19 +45,19 @@ export const constantRouterMap = [
     component: () => import('@/views/signUp/index'),
     hidden: true
   },
-  // {
-  //   path: "/",
-  //   component: Layout,
-  //   redirect: "/dashboard",
-  //   name: "Dashboard",
-  //   hidden: true,
-  //   children: [
-  //     {
-  //       path: "dashboard",
-  //       component: () => import("@/views/dashboard/index")
-  //     }
-  //   ]
-  // },
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/dashboard',
+    name: 'Dashboard',
+    hidden: true,
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import('@/views/dashboard/index')
+      }
+    ]
+  },
   {
     path: '/',
     component: Layout,
@@ -151,19 +151,6 @@ export const constantRouterMap = [
         name: 'generateReport',
         component: () => import('@/views/generateReport/index'),
         meta: { title: 'Generate Report', icon: 'form' }
-      }
-    ]
-  },
-
-  {
-    path: '/changePassword',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/changePassword/index'),
-        meta: { title: 'Change Password', icon: 'password' }
       }
     ]
   },

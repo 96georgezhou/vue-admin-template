@@ -7,7 +7,7 @@
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            <router-link to="/table/index" tag="div">Student Info</router-link>
+            <router-link to="/studentInfo/index" tag="div">Student Info</router-link>
           </div>
         </div>
       </div>
@@ -19,7 +19,7 @@
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            <router-link to="/form/index" tag="div">Report</router-link>
+            <router-link to="/generateReport/index" tag="div">Report</router-link>
           </div>
         </div>
       </div>

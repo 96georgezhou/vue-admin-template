@@ -12,6 +12,7 @@
         style="margin-left: 10px;"
         type="primary"
         icon="el-icon-edit"
+        @click="handleCreate()"
       >Add</el-button>
       <!-- <el-button
         v-waves
@@ -64,8 +65,8 @@
         class-name="small-padding fixed-width"
       >
         <template slot-scope="scope">
-          <el-button type="success" size="mini" @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
-          <el-button type="danger" size="mini" @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
+          <el-button type="success" size="mini" @click="handleEdit(scope.row)">Edit</el-button>
+          <el-button type="danger" size="mini" @click="handleDelete(scope.row.id)">Delete</el-button>
           <el-button type="info" size="mini" @click="handleRefer(scope.$index, scope.row)">Refer</el-button>
         </template>
       </el-table-column>
@@ -87,6 +88,30 @@
         @current-change="handleCurrentChange"
       />
     </div>-->
+    <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
+      <el-form ref="dataForm" :model="temp" label-position="left" label-width="70px" style="width: 400px; margin-left:50px;">
+        <el-form-item prop="name">
+          <label for="nameInput">Name</label>
+          <el-input id="nameInput" v-model="temp.name"/>
+        </el-form-item>
+        <el-form-item prop="schoolName">
+          <label for="schoolNameInput">SchoolName</label>
+          <el-input id="schoolNameInput" v-model="temp.schoolName"/>
+        </el-form-item>
+        <el-form-item prop="schoolDistrict">
+          <label for="schoolDistrictInput">SchoolDistrict</label>
+          <el-input id="schoolDistrictInput" v-model="temp.schoolDistrict"/>
+        </el-form-item>
+        <el-form-item prop="grade">
+          <label for="gradeInput">Grade</label>
+          <el-input id="gradeInput" v-model="temp.grade"/>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="dialogStatus==='create'?createData():updateData()">Confirm</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -124,12 +149,27 @@ export default {
         type: undefined,
         sort: '+id'
       },
+      textMap: {
+        update: 'Edit',
+        create: 'Create'
+      },
+      temp: {
+        id: undefined,
+        name: '',
+        schoolName: '',
+        schoolDistrict: '',
+        grade: '',
+        refer: ''
+      },
       importanceOptions: [1, 2, 3],
       sortOptions: [
         { label: 'ID Ascending', key: '+id' },
         { label: 'ID Descending', key: '-id' }
       ],
       statusOptions: ['published', 'draft', 'deleted'],
+      dialogPvVisible: false,
+      dialogFormVisible: false,
+      dialogStatus: '',
       showReviewer: false,
       list: null,
       selectAll: false,
@@ -161,44 +201,66 @@ export default {
           refer: false
         }
       ]
-      // data2: [
-      //   {
-      //     selected: false,
-      //     id: 1,
-      //     name: "George",
-      //     schoolName: "UWB",
-      //     schoolDistrict: "KingCounty",
-      //     grade: "gradeOne",
-      //     refer: "Result",
-      //     test: [1, 2, 3]
-      //   },
-      //   {
-      //     selected: false,
-      //     id: 2,
-      //     name: "Sarah",
-      //     schoolName: "UWB",
-      //     schoolDistrict: "KingCounty",
-      //     grade: "gradeTwo",
-      //     refer: "Result",
-      //     test: [1, 2, 3]
-      //   },
-      //   {
-      //     selected: false,
-      //     id: 3,
-      //     name: "Donald",
-      //     schoolName: "UWB",
-      //     schoolDistrict: "KingCounty",
-      //     grade: "gradeThree",
-      //     refer: "Result",
-      //     test: [1, 2, 3]
-      //   }
-      // ]
     }
   },
   created() {
-    this.fetchData()
+    this.listLoading = false
   },
   methods: {
+    createData() {
+      this.temp.id = parseInt(Math.random() * 100) + 1024
+      this.studentData.push(this.temp)
+      this.dialogFormVisible = false
+      this.$notify({
+        title: 'Success',
+        message: 'Successfully Added',
+        type: 'success',
+        duration: 2000
+      })
+    },
+    updateData() {
+      for (let i = 0; i < this.studentData.length; i++) {
+        if (this.studentData[i].id === this.temp.id) {
+          this.studentData.splice(i, 1)
+        }
+      }
+      this.studentData.push(this.temp)
+      this.dialogFormVisible = false
+      this.$notify({
+        title: 'Success',
+        message: 'Successfully Edited',
+        type: 'success',
+        duration: 2000
+      })
+    },
+    resetTemp() {
+      this.temp = {
+        id: undefined,
+        name: '',
+        schoolName: '',
+        schoolDistrict: '',
+        grade: '',
+        refer: ''
+      }
+    },
+    handleCreate() {
+      this.resetTemp()
+      this.dialogStatus = 'create'
+      this.dialogFormVisible = true
+    },
+    handleDelete(id) {
+      for (let i = 0; i < this.studentData.length; i++) {
+        if (this.studentData[i].id === id) {
+          this.studentData.splice(i, 1)
+        }
+      }
+      this.$notify({
+        title: 'Success',
+        message: 'Successfully Deleted',
+        type: 'success',
+        duration: 2000
+      })
+    },
     fetchData() {
       this.listLoading = true
       getList(this.listQuery).then(response => {
@@ -218,8 +280,18 @@ export default {
         return 'background-color: #FFFFFF'
       }
     },
-    handleEdit(index, row) {},
-    handleDelete(index, row) {},
+    handleEdit(row) {
+      this.temp = {
+        id: row.id,
+        name: row.name,
+        schoolName: row.schoolName,
+        schoolDistrict: row.schoolDistrict,
+        grade: row.grade,
+        refer: row.refer
+      }
+      this.dialogStatus = 'update'
+      this.dialogFormVisible = true
+    },
     handleRefer(index, row) {
       if (row.refer === false) {
         row.refer = true

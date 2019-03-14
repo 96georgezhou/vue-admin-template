@@ -124,7 +124,7 @@ export default {
     }
   },
   created() {
-    this.fetchData()
+    this.listLoading = false
   },
   methods: {
     fetchData() {
